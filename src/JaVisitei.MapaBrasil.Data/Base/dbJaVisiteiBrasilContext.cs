@@ -30,7 +30,7 @@ namespace JaVisitei.MapaBrasil.Data.Base
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["AuthDB"].ConnectionString);
+                optionsBuilder.UseMySQL(Environment.GetEnvironmentVariable("CONNECTION_STRING"));
             }
         }
 
