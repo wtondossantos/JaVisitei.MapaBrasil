@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Api", "src\JaVisitei.MapaBrasil.Api\JaVisitei.MapaBrasil.Api.csproj", "{5523BB91-BF03-4C4F-8188-5D4FFC6C821A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Business", "src\JaVisitei.MapaBrasil.Business\JaVisitei.MapaBrasil.Business.csproj", "{16D45B64-E9BC-4531-9CB2-5175C541382D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Data", "src\JaVisitei.MapaBrasil.Data\JaVisitei.MapaBrasil.Data.csproj", "{3158621A-6F76-4B43-9A53-73624EC2C711}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Mapper", "src\JaVisitei.MapaBrasil.Mapper\JaVisitei.MapaBrasil.Mapper.csproj", "{C1DC6DFC-6BC7-42D1-B34F-6F2F9583C726}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Repository", "src\JaVisitei.MapaBrasil.Repository\JaVisitei.MapaBrasil.Repository.csproj", "{9FB9E4D6-291E-438F-BEA0-C865A47FDB04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Security", "src\JaVisitei.MapaBrasil.Security\JaVisitei.MapaBrasil.Security.csproj", "{D50E3EFE-A451-40BB-B224-0642F9D3CC43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Service", "src\JaVisitei.MapaBrasil.Service\JaVisitei.MapaBrasil.Service.csproj", "{71C0E637-B592-459F-87A9-8DE534D60B55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5523BB91-BF03-4C4F-8188-5D4FFC6C821A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5523BB91-BF03-4C4F-8188-5D4FFC6C821A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5523BB91-BF03-4C4F-8188-5D4FFC6C821A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5523BB91-BF03-4C4F-8188-5D4FFC6C821A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D45B64-E9BC-4531-9CB2-5175C541382D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D45B64-E9BC-4531-9CB2-5175C541382D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D45B64-E9BC-4531-9CB2-5175C541382D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D45B64-E9BC-4531-9CB2-5175C541382D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3158621A-6F76-4B43-9A53-73624EC2C711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3158621A-6F76-4B43-9A53-73624EC2C711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3158621A-6F76-4B43-9A53-73624EC2C711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3158621A-6F76-4B43-9A53-73624EC2C711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DC6DFC-6BC7-42D1-B34F-6F2F9583C726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1DC6DFC-6BC7-42D1-B34F-6F2F9583C726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1DC6DFC-6BC7-42D1-B34F-6F2F9583C726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1DC6DFC-6BC7-42D1-B34F-6F2F9583C726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FB9E4D6-291E-438F-BEA0-C865A47FDB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB9E4D6-291E-438F-BEA0-C865A47FDB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB9E4D6-291E-438F-BEA0-C865A47FDB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB9E4D6-291E-438F-BEA0-C865A47FDB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D50E3EFE-A451-40BB-B224-0642F9D3CC43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50E3EFE-A451-40BB-B224-0642F9D3CC43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50E3EFE-A451-40BB-B224-0642F9D3CC43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50E3EFE-A451-40BB-B224-0642F9D3CC43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C0E637-B592-459F-87A9-8DE534D60B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C0E637-B592-459F-87A9-8DE534D60B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C0E637-B592-459F-87A9-8DE534D60B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C0E637-B592-459F-87A9-8DE534D60B55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A827FDE2-FD52-49F3-9E34-123838913201}
+	EndGlobalSection
+EndGlobal

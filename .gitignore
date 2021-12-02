@@ -1,0 +1,6 @@
+*.log
+
+/.vs
+bin/
+obj/
+/src/JaVisitei.MapaBrasil.Api/Properties/launchSettings.json

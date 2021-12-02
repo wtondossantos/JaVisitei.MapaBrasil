@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JaVisitei.MapaBrasil.Data\JaVisitei.MapaBrasil.Data.csproj" />
+    <ProjectReference Include="..\JaVisitei.MapaBrasil.Mapper\JaVisitei.MapaBrasil.Mapper.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JaVisitei.MapaBrasil.Data\JaVisitei.MapaBrasil.Data.csproj" />
+    <ProjectReference Include="..\JaVisitei.MapaBrasil.Security\JaVisitei.MapaBrasil.Security.csproj" />
+  </ItemGroup>
+
+</Project>
