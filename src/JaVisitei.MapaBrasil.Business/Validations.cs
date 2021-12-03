@@ -1,5 +1,5 @@
 ﻿using JaVisitei.MapaBrasil.Data.Models;
-using JaVisitei.MapaBrasil.Mapper;
+using JaVisitei.MapaBrasil.Mapper.Request;
 using System.Text.RegularExpressions;
 
 namespace JaVisitei.MapaBrasil.Business
@@ -8,7 +8,7 @@ namespace JaVisitei.MapaBrasil.Business
     {
         private const string regexEmail = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
 
-        public RetornoValidacao ValidaRegistroUsuario(UsuarioAdicionarViewModel model) {
+        public RetornoValidacao ValidaRegistroUsuario(UsuarioAdicionarRequest model) {
 
             var retorno = new RetornoValidacao();
             retorno.Sucesso = false;
@@ -31,7 +31,7 @@ namespace JaVisitei.MapaBrasil.Business
             return retorno;
         }
 
-        public RetornoValidacao ValidaAlteracaoUsuario(UsuarioAlterarViewModel model, string email)
+        public RetornoValidacao ValidaAlteracaoUsuario(UsuarioAlterarRequest model, string email)
         {
 
             var retorno = new RetornoValidacao();
@@ -58,7 +58,7 @@ namespace JaVisitei.MapaBrasil.Business
             return retorno;
         }
 
-        public RetornoValidacao ValidaRegistroVisita(VisitaAdicionarViewModel model)
+        public RetornoValidacao ValidaRegistroVisita(VisitaAdicionarRequest model)
         {
             var retorno = new RetornoValidacao();
             retorno.Sucesso = false;

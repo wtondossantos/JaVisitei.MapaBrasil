@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace JaVisitei.MapaBrasil.Mapper
+namespace JaVisitei.MapaBrasil.Mapper.Request
 {
-    public class VisitaAdicionarViewModel
+    public class VisitaAdicionarRequest
     {
 
         [Required]

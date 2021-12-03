@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace JaVisitei.MapaBrasil.Mapper
+namespace JaVisitei.MapaBrasil.Mapper.Request
 {
-    public class LoginViewModel
+    public class LoginRequest
     {
-        [Required]
+        [Required(ErrorMessage = "Informe Email e Senha")]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Informe Email e Senha")]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Senha { get; set; }

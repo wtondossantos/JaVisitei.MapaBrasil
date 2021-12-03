@@ -10,6 +10,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [Authorize]
     [ApiController]
     [ApiVersion("1")]
+    [ControllerName("Municípios Brasileiros")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class MunicipiosController : ControllerBase
     {

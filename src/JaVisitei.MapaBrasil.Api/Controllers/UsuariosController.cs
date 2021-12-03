@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using JaVisitei.MapaBrasil.Business;
 using JaVisitei.MapaBrasil.Data.Models;
-using JaVisitei.MapaBrasil.Mapper;
+using JaVisitei.MapaBrasil.Mapper.Request;
 using JaVisitei.MapaBrasil.Security;
 using JaVisitei.MapaBrasil.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -15,6 +15,7 @@ namespace JaVisitei.MapaBrasil.Controllers
 {
     [ApiController]
     [ApiVersion("1")]
+    [ControllerName("Usuários")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class UsuariosController : ControllerBase
     {
@@ -45,7 +46,7 @@ namespace JaVisitei.MapaBrasil.Controllers
         [ProducesResponseType(statusCode: 201)]
         [ProducesResponseType(statusCode: 404)]
         [ProducesResponseType(statusCode: 500)]
-        public IActionResult AdicionarUsuario([FromBody] UsuarioAdicionarViewModel model)
+        public IActionResult AdicionarUsuario([FromBody] UsuarioAdicionarRequest model)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +95,7 @@ namespace JaVisitei.MapaBrasil.Controllers
         [ProducesResponseType(statusCode: 201)]
         [ProducesResponseType(statusCode: 404)]
         [ProducesResponseType(statusCode: 500)]
-        public IActionResult AlterarUsuario([FromRoute] int id_usuario, [FromBody] UsuarioAlterarViewModel model)
+        public IActionResult AlterarUsuario([FromRoute] int id_usuario, [FromBody] UsuarioAlterarRequest model)
         {
             if (ModelState.IsValid)
             {

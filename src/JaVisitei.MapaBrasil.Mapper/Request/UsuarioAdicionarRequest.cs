@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace JaVisitei.MapaBrasil.Mapper
+namespace JaVisitei.MapaBrasil.Mapper.Request
 {
-    public class UsuarioAdicionarViewModel
+    public class UsuarioAdicionarRequest
     {
         [Required]
         [Display(Name = "Nome")]

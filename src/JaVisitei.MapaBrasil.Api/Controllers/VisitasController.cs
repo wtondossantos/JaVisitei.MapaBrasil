@@ -1,6 +1,6 @@
 ﻿using JaVisitei.MapaBrasil.Business;
 using JaVisitei.MapaBrasil.Data.Models;
-using JaVisitei.MapaBrasil.Mapper;
+using JaVisitei.MapaBrasil.Mapper.Request;
 using JaVisitei.MapaBrasil.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +13,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [Authorize]
     [ApiController]
     [ApiVersion("1")]
+    [ControllerName("Já Visitei")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class VisitasController : ControllerBase
     {
@@ -39,7 +40,7 @@ namespace JaVisitei.MapaBrasil.Controllers
 
         [HttpPost("{id_usuario}", Name = "PostVisita")]
         [ProducesResponseType(statusCode: 200, Type = typeof(List<Visita>))]
-        public IActionResult Adicionar([FromRoute] int id_usuario, [FromBody] VisitaAdicionarViewModel model)
+        public IActionResult Adicionar([FromRoute] int id_usuario, [FromBody] VisitaAdicionarRequest model)
         {
             if (ModelState.IsValid)
             {

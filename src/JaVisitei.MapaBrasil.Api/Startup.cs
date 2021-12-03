@@ -20,7 +20,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using AutoMapper;
 using JaVisitei.MapaBrasil.Data.Models;
-using JaVisitei.MapaBrasil.Mapper;
+using JaVisitei.MapaBrasil.Mapper.Request;
 using JaVisitei.MapaBrasil.Security;
 
 namespace JaVisitei.MapaBrasil.Api
@@ -36,7 +36,7 @@ namespace JaVisitei.MapaBrasil.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connetionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");//Configuration.GetConnectionString("AuthDB");
+            var connetionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
             services.AddDbContext<dbJaVisiteiBrasilContext>(o => o.UseMySql(connetionString, ServerVersion.AutoDetect(connetionString)));
 
             services.AddControllers()
@@ -109,7 +109,7 @@ namespace JaVisitei.MapaBrasil.Api
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_KEY"))),
                     ClockSkew = TimeSpan.FromMinutes(15),
                     ValidIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER"),
-                    ValidAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")//Configuration["Jwt:Audience"],
+                    ValidAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")
                 };
             });//.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o => Configuration.Bind("CookieSettings", o));
 

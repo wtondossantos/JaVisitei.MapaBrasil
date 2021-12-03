@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace JaVisitei.MapaBrasil.Mapper
+namespace JaVisitei.MapaBrasil.Mapper.Request
 {
-    public class UsuarioAlterarViewModel
+    public class UsuarioAlterarRequest
     {
         [Required]
         [Display(Name = "Nome")]
