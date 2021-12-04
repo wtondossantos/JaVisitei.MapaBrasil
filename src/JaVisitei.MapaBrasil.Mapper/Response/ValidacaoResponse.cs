@@ -11,7 +11,7 @@ namespace JaVisitei.MapaBrasil.Mapper.Response
         public int Codigo { get; set; }
 
         [JsonPropertyName("mensagem")]
-        public string Mensagem { get; set; }
+        public IList<string> Mensagem { get; set; }
 
         [JsonPropertyName("sucesso")]
         public bool Sucesso { get; set; }

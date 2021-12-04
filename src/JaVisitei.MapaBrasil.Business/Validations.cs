@@ -1,5 +1,7 @@
 ﻿using JaVisitei.MapaBrasil.Data.Models;
 using JaVisitei.MapaBrasil.Mapper.Request;
+using JaVisitei.MapaBrasil.Mapper.Response;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace JaVisitei.MapaBrasil.Business
@@ -8,66 +10,62 @@ namespace JaVisitei.MapaBrasil.Business
     {
         private const string regexEmail = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
 
-        public RetornoValidacao ValidaRegistroUsuario(UsuarioAdicionarRequest model) {
+        public List<string> ValidaRegistroUsuario(UsuarioAdicionarRequest model) {
 
-            var retorno = new RetornoValidacao();
-            retorno.Sucesso = false;
+            var retorno = new List<string>();
 
             Regex regex = new Regex(regexEmail);
             Match match = regex.Match(model.Email);
 
             if (!match.Success)
-                retorno.Mensagem = "Email inválido.";
+                retorno.Add("Email inválido.");
 
             else if (model.Email != model.ConfirmarEmail)
-                retorno.Mensagem = "A e-mail não confere.";
+                retorno.Add("Confirmação do e-mail não confere.");
 
             else if (model.Senha != model.ConfirmarSenha)
-                retorno.Mensagem = "A senha não confere.";
+                retorno.Add("Confirmação da senha não confere.");
 
             else if (model.Senha.Length < 8)
-                retorno.Mensagem = "A senha deve conter no mínimo 8 caracteres.";
+                retorno.Add("A senha deve conter no mínimo 8 caracteres.");
 
             return retorno;
         }
 
-        public RetornoValidacao ValidaAlteracaoUsuario(UsuarioAlterarRequest model, string email)
+        public List<string> ValidaAlteracaoUsuario(UsuarioAlterarRequest model, string email)
         {
-
-            var retorno = new RetornoValidacao();
-            retorno.Sucesso = false;
+            var retorno = new List<string>();
 
             Regex regex = new Regex(regexEmail);
             Match match = regex.Match(model.Email);
 
             if (!match.Success)
-                retorno.Mensagem = "Email inválido.";
+                retorno.Add("Email inválido.");
 
             else if (model.Email != email && model.Email != model.ConfirmarEmail)
-                retorno.Mensagem = "A e-mail não confere.";
+                retorno.Add("Confirmação do e-mail não confere.");
 
             else if (!string.IsNullOrEmpty(model.Senha))
             { 
                 if(model.Senha != model.ConfirmarSenha)
-                    retorno.Mensagem = "A senha não confere.";
+                    retorno.Add("Confirmação da senha não confere.");
 
                 else if(model.Senha.Length < 8)
-                    retorno.Mensagem = "A senha deve conter no mínimo 8 caracteres.";
+                    retorno.Add("A senha deve conter no mínimo 8 caracteres.");
             }
 
             return retorno;
         }
 
-        public RetornoValidacao ValidaRegistroVisita(VisitaAdicionarRequest model)
+        public List<string> ValidaRegistroVisita(VisitaAdicionarRequest model)
         {
-            var retorno = new RetornoValidacao();
-            retorno.Sucesso = false;
+            var retorno = new List<string>();
 
             if (string.IsNullOrEmpty(model.IdRegiao))
-                retorno.Mensagem = "Informe uma região.";
+                retorno.Add("Informe uma região.");
 
             else if (model.IdTipoRegiao == 0)
-                retorno.Mensagem = "Informe um tipo de região.";
+                retorno.Add("Informe um tipo de região.");
 
             return retorno;
         }

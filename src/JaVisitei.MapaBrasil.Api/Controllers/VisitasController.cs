@@ -1,6 +1,7 @@
 ﻿using JaVisitei.MapaBrasil.Business;
 using JaVisitei.MapaBrasil.Data.Models;
 using JaVisitei.MapaBrasil.Mapper.Request;
+using JaVisitei.MapaBrasil.Mapper.Response;
 using JaVisitei.MapaBrasil.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Já Visitei")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/visita")]
     public class VisitasController : ControllerBase
     {
         private readonly IVisitaService _visita;
@@ -45,44 +46,52 @@ namespace JaVisitei.MapaBrasil.Controllers
             if (ModelState.IsValid)
             {
                 var validacao = new Validations();
-                var retorno = new RetornoValidacao();
+                var retorno = new ValidacaoResponse();
+                var mensagens = new List<string>();
                 var helper = new Helper();
+
                 retorno.Sucesso = false;
+                retorno.Codigo = 0;
 
                 try
                 {
                     if (_visita.Pesquisar(x => x.IdUsuario == id_usuario && x.IdTipoRegiao == model.IdTipoRegiao && x.IdRegiao == model.IdRegiao).ToList().Count > 0)
-                        retorno.Mensagem = "Visita já registrada.";
+                        mensagens.Add("Visita já registrada.");
 
                     else
                     {
-                        retorno = validacao.ValidaRegistroVisita(model);
+                        retorno.Mensagem = validacao.ValidaRegistroVisita(model);
 
                         if (_usuario.Pesquisar(x => x.Id == id_usuario).ToList().Count <= 0)
-                            retorno.Mensagem = "Usuário não encontrado.";
+                            retorno.Mensagem.Add("Usuário não encontrado.");
 
-                        if (!string.IsNullOrEmpty(retorno.Mensagem))
+                        if (retorno.Mensagem.Count > 0)
                             return Ok(retorno);
 
-                        var visita = new Visita { 
+                        var visita = new Visita
+                        {
                             IdUsuario = id_usuario,
                             IdTipoRegiao = model.IdTipoRegiao,
                             IdRegiao = model.IdRegiao,
                             Cor = model.Cor == null ? helper.RandomHexString() : model.Cor,
                             Data = model.Data == null ? DateTime.Now : model.Data.GetValueOrDefault()
                         };
-                        
+
                         _visita.Adicionar(visita);
+
                         retorno.Sucesso = true;
-                        retorno.Mensagem = "Visita registrada com sucesso.";
+                        retorno.Codigo = 1;
+                        retorno.Mensagem.Add("Visita registrada com sucesso.");
                     }
                 }
                 catch
                 {
-                    retorno.Mensagem = "Erro ao registrar visita.";
+                    retorno.Mensagem.Add("Erro ao registrar visita. Exceção.");
+                    retorno.Codigo = -1;
                 }
-
+                
                 return Ok(retorno);
+
             }
             return BadRequest();
         }

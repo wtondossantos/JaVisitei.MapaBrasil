@@ -11,7 +11,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Municípios Brasileiros")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/municipio")]
     public class MunicipiosController : ControllerBase
     {
         private readonly IMunicipioService _municipio;

@@ -11,7 +11,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Estados Brasilieiros")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/estado")]
     public class EstadosController : ControllerBase
     {
         private readonly IEstadoService _estado;
@@ -59,7 +59,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_estado}/mesorregioes/", Name = "GetEstadoMesorregioes")]
+        [HttpGet("{id_estado}/mesorregiao/", Name = "GetEstadoMesorregioes")]
         public IActionResult PesquisarMesorregioes([FromRoute] string id_estado)
         {
             var model = _mesorreigao.Pesquisar(x => x.IdEstado == id_estado).ToList();
@@ -70,7 +70,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_estado}/microrregioes/", Name = "GetEstadoMicrorregioes")]
+        [HttpGet("{id_estado}/microrregiao/", Name = "GetEstadoMicrorregioes")]
         public IActionResult PesquisarMicrorregioes([FromRoute] string id_estado)
         {
             var model = _microrreigao.PesquisarPorEstado(id_estado).ToList();
@@ -81,7 +81,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_estado}/arquipelagos/", Name = "GetEstadoArquipelagos")]
+        [HttpGet("{id_estado}/arquipelago/", Name = "GetEstadoArquipelagos")]
         public IActionResult PesquisarArquipelagos([FromRoute] string id_estado)
         {
             var model = _arquipelago.PesquisarPorEstado(id_estado).ToList();
@@ -92,7 +92,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_estado}/municipios/", Name = "GetEstadoMunicipios")]
+        [HttpGet("{id_estado}/municipio/", Name = "GetEstadoMunicipios")]
         public IActionResult PesquisarMunicipios([FromRoute] string id_estado)
         {
             var model = _municipio.PesquisarPorEstado(id_estado).ToList();
@@ -103,7 +103,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_estado}/ilhas/", Name = "GetEstadoIlhas")]
+        [HttpGet("{id_estado}/ilha/", Name = "GetEstadoIlhas")]
         public IActionResult PesquisarIlhas([FromRoute] string id_estado)
         {
             var model = _ilha.PesquisarPorEstado(id_estado).ToList();

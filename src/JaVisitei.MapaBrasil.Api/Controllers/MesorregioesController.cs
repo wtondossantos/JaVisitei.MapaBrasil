@@ -11,7 +11,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Mesorregiões Brasileiras")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/mesorregiao")]
     public class MesorregioesController : ControllerBase
     {
         private readonly IMesorregiaoService _mesorreigao;
@@ -49,7 +49,7 @@ namespace JaVisitei.MapaBrasil.Controllers
 
             return Ok(model);
         }
-        [HttpGet("{id_mesorregiao}/microrregioes/", Name = "GetMesorregiaoMicrorregioes")]
+        [HttpGet("{id_mesorregiao}/microrregiao/", Name = "GetMesorregiaoMicrorregioes")]
         public IActionResult PesquisarMicrorregioes([FromRoute] string id_mesorregiao)
         {
             var model = _microrreigao.Pesquisar(x => x.IdMesorregiao == id_mesorregiao).ToList();
@@ -60,7 +60,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_mesorregiao}/arquipelagos/", Name = "GetMesorregiaoArquipelagos")]
+        [HttpGet("{id_mesorregiao}/arquipelago/", Name = "GetMesorregiaoArquipelagos")]
         public IActionResult PesquisarArquipelagos([FromRoute] string id_mesorregiao)
         {
             var model = _arquipelago.Pesquisar(x => x.IdMesorregiao == id_mesorregiao).ToList();

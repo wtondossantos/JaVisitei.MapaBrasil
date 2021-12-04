@@ -11,7 +11,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Ilhas Brasilieiras")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/ilha")]
     public class IlhasController : ControllerBase
     {
         private readonly IIlhaService _ilha;

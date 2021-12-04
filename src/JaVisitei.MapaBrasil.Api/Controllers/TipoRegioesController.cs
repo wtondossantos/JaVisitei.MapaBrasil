@@ -10,8 +10,8 @@ namespace JaVisitei.MapaBrasil.Controllers
     [Authorize]
     [ApiController]
     [ApiVersion("1")]
-    [ControllerName("Tipo de regiões")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [ControllerName("Regiões")]
+    [Route("api/v{version:apiVersion}/regiao")]
     public class TipoRegioesController : ControllerBase
     {
         private readonly ITipoRegiaoService _tiporegiao;
@@ -21,7 +21,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             _tiporegiao = tiporegiao;
         }
 
-        [HttpGet(Name = "GetTipoRegioes")]
+        [HttpGet("tipo", Name = "GetTipoRegioes")]
         [ProducesResponseType(statusCode: 200, Type = typeof(List<TipoRegiao>))]
         public IActionResult Pesquisar()
         {

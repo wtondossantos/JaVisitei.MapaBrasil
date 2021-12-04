@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 
 namespace JaVisitei.MapaBrasil.Api.Controllers
 {
     [ApiController]
     [ApiVersion("1")]
-    [ControllerName("Autenticação")]
+    [ControllerName("Perfil")]
     [Route("api/v{version:apiVersion}/perfil")]
     public class LoginController : ControllerBase
     {
@@ -31,39 +32,6 @@ namespace JaVisitei.MapaBrasil.Api.Controllers
         public IActionResult Index() => Ok("Oi");
 
         [AllowAnonymous]
-        [HttpGet("login2", Name = "GetLogin")]
-        [ProducesResponseType(statusCode: 201)]
-        [ProducesResponseType(statusCode: 404)]
-        [ProducesResponseType(statusCode: 500)]
-        public IActionResult Autenticacao([FromBody] LoginRequest model)
-        {
-            if (ModelState.IsValid)
-            {
-                var retorno = new RetornoValidacao();
-                retorno.Sucesso = false;
-
-                var usuario = new Usuario
-                {
-                    Email = model.Email,
-                    Senha = model.Senha
-                };
-
-                var resultado = _usuario.Autenticacao(usuario);
-
-                if (resultado != null && !String.IsNullOrEmpty(resultado.Senha))
-                {
-                    retorno.Mensagem = "Login realizado com sucesso!";
-                    retorno.Sucesso = true;
-                    return Ok(retorno);
-                }
-
-                retorno.Mensagem = "Usuário ou senha inválidos.";
-                return Unauthorized();
-            }
-            return BadRequest();
-        }
-
-        [AllowAnonymous]
         [HttpPost("login", Name = "PostLogin")]
         [ProducesResponseType(statusCode: 201)]
         [ProducesResponseType(statusCode: 404)]
@@ -73,6 +41,8 @@ namespace JaVisitei.MapaBrasil.Api.Controllers
             if (ModelState.IsValid)
             {
                 var validacao = new ValidacaoResponse();
+                validacao.Mensagem = new List<string>();
+
                 var usuario = new Usuario
                 {
                     Email = model.Email,
@@ -80,13 +50,12 @@ namespace JaVisitei.MapaBrasil.Api.Controllers
                 };
 
                 var resultado = _usuario.Autenticacao(usuario);
-
                 if (resultado != null && !String.IsNullOrEmpty(resultado.Senha))
                 {
                     var tokenizar = new TokenString(resultado, _configuration);
                     var token = tokenizar.GerarToken();
 
-                    validacao.Mensagem = "Login realizado com sucesso";
+                    validacao.Mensagem.Add("Login realizado com sucesso.");
                     validacao.Codigo = 1;
                     validacao.Sucesso = true;
 
@@ -99,7 +68,7 @@ namespace JaVisitei.MapaBrasil.Api.Controllers
                     return Ok(retorno);
                 }
 
-                validacao.Mensagem = "Usuário ou senha inválidos.";
+                validacao.Mensagem.Add("Usuário ou senha inválido.");
                 validacao.Codigo = 0;
                 validacao.Sucesso = false;
 

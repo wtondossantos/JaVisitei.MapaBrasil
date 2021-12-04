@@ -11,7 +11,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Países")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/pais")]
     public class PaisesController : ControllerBase
     {
         private readonly IPaisService _pais;
@@ -51,7 +51,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_pais}/estados/", Name = "GetPaisEstados")]
+        [HttpGet("{id_pais}/estado/", Name = "GetPaisEstados")]
         [ProducesResponseType(statusCode: 200, Type = typeof(List<Estado>))]
         [ProducesResponseType(statusCode: 404)]
         [ProducesResponseType(statusCode: 500)]

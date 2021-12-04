@@ -2,12 +2,14 @@
 using JaVisitei.MapaBrasil.Business;
 using JaVisitei.MapaBrasil.Data.Models;
 using JaVisitei.MapaBrasil.Mapper.Request;
+using JaVisitei.MapaBrasil.Mapper.Response;
 using JaVisitei.MapaBrasil.Security;
 using JaVisitei.MapaBrasil.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -16,7 +18,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Usuários")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/usuario")]
     public class UsuariosController : ControllerBase
     {
         private readonly IUsuarioService _usuario;
@@ -51,19 +53,21 @@ namespace JaVisitei.MapaBrasil.Controllers
             if (ModelState.IsValid)
             {
                 var validacao = new Validations();
-                var retorno = new RetornoValidacao();
+                var retorno = new ValidacaoResponse();
+                var mensagens = new List<string>();
                 retorno.Sucesso = false;
+                retorno.Codigo = 0;
 
                 try
                 {
                     if (_usuario.Pesquisar(x => x.Email == model.Email).ToList().Count > 0)
-                        retorno.Mensagem = "Já existe usuário com este e-mail.";
+                        retorno.Mensagem.Add("Já existe usuário com este e-mail.");
 
                     else
                     {
-                        retorno = validacao.ValidaRegistroUsuario(model);
+                        mensagens = validacao.ValidaRegistroUsuario(model);
 
-                        if (!string.IsNullOrEmpty(retorno.Mensagem))
+                        if (retorno.Mensagem.Count > 0)
                             return Ok(retorno);
 
                         var usuario = new Usuario()
@@ -76,13 +80,16 @@ namespace JaVisitei.MapaBrasil.Controllers
                         };
 
                         _usuario.Adicionar(usuario);
+
+                        retorno.Codigo = 1;
                         retorno.Sucesso = true;
-                        retorno.Mensagem = $"Usuário {model.Email} registrado com sucesso.";
+                        retorno.Mensagem.Add($"Usuário {model.NomeUsuario}, {model.Email} registrado com sucesso.");
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
-                    retorno.Mensagem = "Erro ao registrar usuário.";
+                    retorno.Codigo = -1;
+                    retorno.Mensagem.Add("Erro ao registrar usuário.");
                 }
 
                 return Ok(retorno);
@@ -100,8 +107,10 @@ namespace JaVisitei.MapaBrasil.Controllers
             if (ModelState.IsValid)
             {
                 var validacao = new Validations();
-                var retorno = new RetornoValidacao();
+                var retorno = new ValidacaoResponse();
+                var mensagens = new List<string>();
                 retorno.Sucesso = false;
+                retorno.Codigo = 0;
 
                 try
                 {
@@ -109,7 +118,7 @@ namespace JaVisitei.MapaBrasil.Controllers
 
                     if (usuario == null)
                     {
-                        retorno.Mensagem = $"Usuário não encontrato.";
+                        retorno.Mensagem.Add("Usuário não encontrado.");
                         return Ok(retorno);
                     }
 
@@ -120,13 +129,14 @@ namespace JaVisitei.MapaBrasil.Controllers
 
                     if (resultado == null && String.IsNullOrEmpty(resultado.Senha))
                     {
-                        retorno.Mensagem = $"Senha antiga incorreta.";
+                        retorno.Mensagem.Add("Senha antiga incorreta.");
                         return Ok(retorno);
                     }
 
-                    retorno = validacao.ValidaAlteracaoUsuario(model, usuario.Email);
+                    mensagens = validacao.ValidaAlteracaoUsuario(model, usuario.Email);
+                    retorno.Mensagem = mensagens;
 
-                    if (!string.IsNullOrEmpty(retorno.Mensagem))
+                    if (retorno.Mensagem.Count > 0)
                         return Ok(retorno);
 
                     usuario.Nome = model.Nome;
@@ -134,7 +144,7 @@ namespace JaVisitei.MapaBrasil.Controllers
 
                     if (_usuario.Pesquisar(x => x.Id != id_usuario && x.NomeUsuario == model.NomeUsuario).ToList().Count > 0)
                     {
-                        retorno.Mensagem = "Já existe usuário cadastrado com esse nome de usuário.";
+                        retorno.Mensagem.Add("Já existe usuário cadastrado com esse nome de usuário.");
                         return Ok(retorno);
                     }
                     else
@@ -142,7 +152,7 @@ namespace JaVisitei.MapaBrasil.Controllers
 
                     if (_usuario.Pesquisar(x => x.Id != id_usuario && x.Email == model.Email).ToList().Count > 0)
                     {
-                        retorno.Mensagem = "Já existe usuário cadastrado com esse e-mail.";
+                        retorno.Mensagem.Add("Já existe usuário cadastrado com esse e-mail.");
                         return Ok(retorno);
                     }
                     else
@@ -152,12 +162,15 @@ namespace JaVisitei.MapaBrasil.Controllers
                         usuario.Senha = LoginHash.Sha256encrypt(model.Senha);
                     
                     _usuario.Alterar(usuario);
+
+                    retorno.Codigo = 1;
                     retorno.Sucesso = true;
-                    retorno.Mensagem = $"Usuário {model.Email} atualizado com sucesso.";
+                    retorno.Mensagem.Add($"Usuário {model.Email} atualizado com sucesso.");
                 }
                 catch (Exception ex)
                 {
-                    retorno.Mensagem = "Erro ao alterar usuário.";
+                    retorno.Mensagem.Add("Erro ao alterar usuário.");
+                    retorno.Codigo = -1;
                 }
 
                 return Ok(retorno);

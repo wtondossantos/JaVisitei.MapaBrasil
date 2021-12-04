@@ -12,7 +12,7 @@ namespace JaVisitei.MapaBrasil.Controllers
     [ApiController]
     [ApiVersion("1")]
     [ControllerName("Arquipélagos Brasilieros")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/arquipelago")]
     public class ArquipelagosController : ControllerBase
     {
         private readonly IArquipelagoService _arquipelago;
@@ -53,7 +53,7 @@ namespace JaVisitei.MapaBrasil.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id_arquipelago}/ilhas/", Name = "GetArquipelagoIlhas")]
+        [HttpGet("{id_arquipelago}/ilha/", Name = "GetArquipelagoIlhas")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Ilha>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
