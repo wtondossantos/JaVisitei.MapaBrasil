@@ -17,6 +17,6 @@ namespace JaVisitei.MapaBrasil.Data.Models
         [Column("Nome")]
         public string Nome { get; set; }
 
-        public virtual ICollection<Estado> Estados { get; set; }
+        internal virtual ICollection<Estado> Estados { get; set; }
     }
 }

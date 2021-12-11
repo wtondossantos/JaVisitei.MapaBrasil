@@ -18,7 +18,7 @@ namespace JaVisitei.MapaBrasil.Data.Models
         [Column("Nome")]
         public string Nome { get; set; }
 
-        public virtual ICollection<Visita> Visitas { get; set; }
+        internal virtual ICollection<Visita> Visitas { get; set; }
 
     }
 }

@@ -21,6 +21,6 @@ namespace JaVisitei.MapaBrasil.Data.Models
         public string Desenho { get; set; }
 
         internal virtual Mesorregiao IdMesorregiaoNavigation { get; set; }
-        public virtual ICollection<Municipio> Municipios { get; set; }
+        internal virtual ICollection<Municipio> Municipios { get; set; }
     }
 }

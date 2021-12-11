@@ -20,6 +20,6 @@ namespace JaVisitei.MapaBrasil.Data.Models
         public string Nome { get; set; }
 
         internal virtual Mesorregiao IdMesorregiaoNavigation { get; set; }
-        public virtual ICollection<Ilha> Ilhas { get; set; }
+        internal virtual ICollection<Ilha> Ilhas { get; set; }
     }
 }
