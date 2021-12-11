@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Securi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.Service", "src\JaVisitei.MapaBrasil.Service\JaVisitei.MapaBrasil.Service.csproj", "{71C0E637-B592-459F-87A9-8DE534D60B55}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaVisitei.MapaBrasil.WebApp", "src\JaVisitei.MapaBrasil.WebApp\JaVisitei.MapaBrasil.WebApp.csproj", "{033FA1B0-6E19-4C34-AFD5-010EF0CA6282}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{71C0E637-B592-459F-87A9-8DE534D60B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71C0E637-B592-459F-87A9-8DE534D60B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71C0E637-B592-459F-87A9-8DE534D60B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{033FA1B0-6E19-4C34-AFD5-010EF0CA6282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033FA1B0-6E19-4C34-AFD5-010EF0CA6282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033FA1B0-6E19-4C34-AFD5-010EF0CA6282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033FA1B0-6E19-4C34-AFD5-010EF0CA6282}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

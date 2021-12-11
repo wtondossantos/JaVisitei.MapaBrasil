@@ -167,7 +167,7 @@ namespace JaVisitei.MapaBrasil.Controllers
                     retorno.Sucesso = true;
                     retorno.Mensagem.Add($"Usuário {model.Email} atualizado com sucesso.");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     retorno.Mensagem.Add("Erro ao alterar usuário.");
                     retorno.Codigo = -1;

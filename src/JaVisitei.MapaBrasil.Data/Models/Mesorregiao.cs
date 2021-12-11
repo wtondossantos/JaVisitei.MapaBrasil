@@ -22,7 +22,7 @@ namespace JaVisitei.MapaBrasil.Data.Models
         [Column("Desenho")]
         public string Desenho { get; set; }
 
-        public virtual Estado IdEstadoNavigation { get; set; }
+        internal virtual Estado IdEstadoNavigation { get; set; }
         public virtual ICollection<Arquipelago> Arquipelagos { get; set; }
         public virtual ICollection<Microrregiao> Microrregiaos { get; set; }
     }

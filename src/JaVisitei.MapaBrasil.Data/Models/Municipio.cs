@@ -14,6 +14,6 @@ namespace JaVisitei.MapaBrasil.Data.Models
         [Column("Desenho")]
         public string Desenho { get; set; }
 
-        public virtual Microrregiao IdMicrorregiaoNavigation { get; set; }
+        internal virtual Microrregiao IdMicrorregiaoNavigation { get; set; }
     }
 }

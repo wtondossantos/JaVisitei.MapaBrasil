@@ -20,7 +20,7 @@ namespace JaVisitei.MapaBrasil.Data.Models
         [Column("Desenho")]
         public string Desenho { get; set; }
 
-        public virtual Mesorregiao IdMesorregiaoNavigation { get; set; }
+        internal virtual Mesorregiao IdMesorregiaoNavigation { get; set; }
         public virtual ICollection<Municipio> Municipios { get; set; }
     }
 }

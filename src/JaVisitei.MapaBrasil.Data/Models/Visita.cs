@@ -25,8 +25,8 @@ namespace JaVisitei.MapaBrasil.Data.Models
         [Column("Data")]
         public DateTime Data { get; set; }
 
-        public virtual Usuario IdUsuarioNavigation { get; set; }
+        internal virtual Usuario IdUsuarioNavigation { get; set; }
 
-        public virtual TipoRegiao IdTipoRegiaoNavigation { get; set; }
+        internal virtual TipoRegiao IdTipoRegiaoNavigation { get; set; }
     }
 }

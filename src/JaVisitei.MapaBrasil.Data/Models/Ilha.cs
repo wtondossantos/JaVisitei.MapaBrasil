@@ -16,6 +16,6 @@ namespace JaVisitei.MapaBrasil.Data.Models
         [Column("Desenho")]
         public string Desenho { get; set; }
 
-        public virtual Arquipelago IdArquipelagoNavigation { get; set; }
+        internal virtual Arquipelago IdArquipelagoNavigation { get; set; }
     }
 }
